@@ -30,26 +30,27 @@ SELECT DISTINCT deptno FROM emp_tab;
 -------Comparision Conditions-------
 
 --To fetch employee data whose salaries are greater than 3000
-SELECT empno,name,salary FROM emp_tab WHERE salary>3000;
+SELECT empno,name,salary FROM emp_tab 
+WHERE salary>3000;
 
 --To fetch employee data whose salaries range from 2000 to 5000
-SELECT * FROM emp_tab WHERE salary BETWEEN 2000 AND 5000;
+SELECT * FROM emp_tab 
+WHERE salary BETWEEN 2000 AND 5000;
 
 --To fetch employee data who belongs to department number 30 & 70
-SELECT * FROM emp_tab WHERE deptno IN (30,70);
+SELECT * FROM emp_tab 
+WHERE deptno IN (30,70);
 
 --To fetch employee data whose name second letter is 'I'
-SELECT * FROM emp_tab WHERE name LIKE '_I%';
+SELECT * FROM emp_tab 
+WHERE name LIKE '_I%';
 
 --To fetch employee data whose department number is NULL
-SELECT * FROM emp_tab WHERE deptno IS NULL;
+SELECT * FROM emp_tab 
+WHERE deptno IS NULL;
 
 -------Logical Conditions (AND, OR, NOT)-------
 
-
-
-
--------
 
 
 
