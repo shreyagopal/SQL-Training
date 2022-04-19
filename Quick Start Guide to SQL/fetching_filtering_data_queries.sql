@@ -58,12 +58,11 @@ SELECT * FROM emp_tab WHERE salary>6000 OR deptno>50;
 -- To fetch all the employee details of employees who do not belong to departments 40 and 70
 SELECT * FROM emp_tab WHERE deptno NOT IN (40,70);
 
+-------Sorting Data-------
+--Default order is ascending order. ORDER BY clause always comes last in the SELECT statement.
 
+--Arrange the data in descending order
+SELECT empno,name,salary FROM emp_tab ORDER BY salary DESC;
 
-
-
-
-
-
-
-
+--Sorting data using multiple columns
+SELECT * FROM emp_tab ORDER BY deptno, salary DESC;
