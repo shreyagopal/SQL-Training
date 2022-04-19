@@ -46,7 +46,23 @@ SELECT TRIM('d' FROM 'HelloWorld') FROM DUAL; --HelloWorl
 --REPLACE searches for a specific character expression and replaces it with another expression. 
 SELECT REPLACE('HelloWorld','Hello','Bye') FROM DUAL; --ByeWorld
 
+-----------------------Date Functions----------------------------
 
+-- SYSDATE function returns the current date.
+SELECT SYSDATE FROM DUAL; --19-APR-22
+
+--MONTHS_BETWEEN, ADD_MONTHS, NEXT_DAY, LAST_DAY, ROUND, TRUNC
+SELECT MONTHS_BETWEEN('03-DEC-2010','01-MAR-2010') FROM DUAL; --9.064
+
+SELECT ADD_MONTHS('05-JUN-2021',4) FROM DUAL; --05-OCT-21
+
+SELECT NEXT_DAY('03-JUL-2021','TUESDAY') FROM DUAL; --06-JUL-21
+
+SELECT LAST_DAY('12–FEB-2021') FROM DUAL; --28-FEB-21
+
+SELECT ROUND(SYSDATE,'MONTH') FROM DUAL; --01-MAY-22
+
+SELECT TRUNC(SYSDATE,'MONTH') FROM DUAL; --01-APR-22
 
 
 
