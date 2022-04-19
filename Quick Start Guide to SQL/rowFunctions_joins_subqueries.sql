@@ -64,7 +64,31 @@ SELECT ROUND(SYSDATE,'MONTH') FROM DUAL; --01-MAY-22
 
 SELECT TRUNC(SYSDATE,'MONTH') FROM DUAL; --01-APR-22
 
+----------------Data Type Conversion Functions----------------
 
+--Implicit and Explicit ( TO_CHAR, TO_NUMBER, and TO_DATE) conversions
+SELECT name,TO_CHAR(hiredate,'yyyy') "Year Of Joining" FROM emp_tab;
 
+-- NVL function converts a null value to an actual value.  Both expr1 and expr2 must be the same data type.
+SELECT NVL(name,'Unavailable') FROM emp_tab;
+
+---------------Conditional Expressions (CASE and DECODE)------------------
+
+--CASE function
+SELECT name, job, salary,
+CASE job WHEN 'MANAGER' THEN 1.20*salary
+	      WHEN 'ANALYST' THEN 1.15*salary
+	      WHEN 'CLERK' THEN 1.10*salary
+	      ELSE salary 
+	      END "Revised Salary"
+FROM emp_tab;
+
+--DECODE Function
+SELECT name, job, salary,
+DECODE(job,'MANAGER',1.20*salary,
+	       'ANALYST',1.15*salary,
+	       'CLERK',1.10*salary,
+	       salary) "Revised Salary"
+FROM emp_tab;
 
 
