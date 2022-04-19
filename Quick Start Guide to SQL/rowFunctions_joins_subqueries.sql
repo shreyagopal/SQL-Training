@@ -84,5 +84,40 @@ SELECT COUNT(name) FROM emp_tab WHERE manager=7003;
 SELECT COUNT(DISTINCT(empno)) FROM emp_tab;
 SELECT MIN(hiredate), MAX(hiredate) FROM emp_tab;
 SELECT MIN(name), MAX(name) FROM emp_tab;
---to find the employee with the highest salary under every manager
+--To find the employee with the highest salary under every manager (Creating a group)
 SELECT manager, MAX(salary) FROM emp_tab GROUP BY manager ORDER BY MAX(salary) DESC;
+--To restrict groups and display only those group results that are needed using HAVING clause
+SELECT deptno, MAX(salary) FROM emp_tab GROUP BY deptno HAVING MAX(salary)>=4000;
+
+------------------------------------------------------JOINS---------------------------------------------
+--Joins are used to fetch data from one or more tables at a time. Four types: inner join, right join, left join and full outer join. 
+
+--Inner Join retrieves all rows matching in both the tables.
+SELECT * FROM country_tab c INNER JOIN states_tab s ON c.country_id=s.country_id;
+--Left join retrieves all rows from the left table and only the matching rows from the right table.
+SELECT * FROM country_tab c LEFT JOIN states_tab s ON c.country_id=s.country_id;
+-- Right join retrieves all rows from the right table and only the matching rows from the left table.
+SELECT * FROM country_tab c RIGHT JOIN states_tab s ON c.country_id=s.country_id;
+--Full Outer join pulls up all the rows from the left table as well as all the rows from the right table irrespective of whether they match or not.
+SELECT * FROM country_tab c FULL OUTER JOIN states_tab s ON c.country_id=s.country_id;
+
+----------------------------------------------SUBQUERIES-------------------------------------------
+--Must be enclosed in parentheses. Must always come on the right side of the comparison condition
+
+--Single row subqueries return a single row or single value. And we use single row comparison operators like equals to not equals to, less than, 
+--less than equals to, greater than, and greater than equals to. 
+SELECT * FROM states_tab WHERE country_id=(SELECT country_id FROM states_tab WHERE state_name='CALIFORNIA');
+--Can use different tables in subqueries
+SELECT * FROM country_tab WHERE country_id=(SELECT country_id FROM states_tab WHERE state_name='CALIFORNIA');
+--Can also z use group functions in subqueries
+SELECT empno ,name, salary FROM emp_tab WHERE salary=(SELECT MAX(salary) FROM emp_tab); 
+
+--Multiple row subqueries return multiple rows. And we use multiple row comparison operators like IN, ANY, and ALL.
+SELECT empno,name,salary,deptno FROM emp_tab WHERE salary IN (SELECT salary FROM emp_tab WHERE deptno=30);
+--ANY operator checks for any of the values and only when the condition meets it fetches the details
+SELECT empno,name,salary,deptno FROM emp_tab WHERE salary < ANY (SELECT salary FROM emp_tab WHERE deptno=30);
+--ALL operator checks for all the values and only when the condition meets it fetches the details
+SELECT empno,name,salary,deptno FROM emp_tab WHERE salary > ALL (SELECT salary FROM emp_tab WHERE deptno=30);
+
+
+------------------------------------------------------------------THE END-------------------------------------------------------------------------------------------
