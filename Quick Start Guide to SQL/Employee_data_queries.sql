@@ -51,7 +51,17 @@ WHERE deptno IS NULL;
 
 -------Logical Conditions (AND, OR, NOT)-------
 
+-- To retrieve employee data whose name begins with S, and the department 
+--number is 30
+SELECT * FROM emp_tab WHERE name LIKE 'S%' AND deptno=30;
 
+-- To retrieve employee details whose salary is either greater than 6,000 or 
+--department number is greater than 50
+SELECT * FROM emp_tab WHERE salary>6000 OR deptno>50;
+
+-- To fetch all the employee details of employees who do not belong to 
+--departments 40 and 70
+SELECT * FROM emp_tab WHERE deptno NOT IN (40,70);
 
 
 
